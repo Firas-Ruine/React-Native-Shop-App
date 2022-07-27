@@ -81,4 +81,12 @@ const styles = StyleSheet.create({
     color: Colors.orange,
   },
 });
+
+export const screenOptions = navData =>
+{
+  return {
+    headerTitle : 'Your Cart'
+  }
+}
+
 export default CartScreen;

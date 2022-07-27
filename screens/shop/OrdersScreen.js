@@ -61,4 +61,22 @@ const OrdersScreen = props => {
 const styles = StyleSheet.create({
   centered: { flex: 1, justifyContent: "center", alignItems: "center" }
 });
+
+export const screenOptions = navData => 
+{
+  return {
+    headerTitle:'Your Orders',
+    headerLeft:() =>(
+      <HeaderButtons HeaderButtonComponent={HeaderButton}>
+      <Item title="Menu" 
+      iconName={Platform.OS === 'android' ? 'md-menu' : 'ios-menu'} 
+      onPress={()=>{
+        navData.navigation.toggleDrawer();
+      }}
+      
+      />
+      </HeaderButtons>
+    )
+  }
+}
 export default OrdersScreen;

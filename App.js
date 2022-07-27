@@ -4,10 +4,11 @@ import { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import productsReducer from "./store/reducers/products";
 import cartReducer from "./store/reducers/cart";
-import { MyDrawer, MyStack } from "./navigation/ShopNavigator";
+import { MyDrawer, MyStack, ProductsNavigators } from "./navigation/ShopNavigator";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
-import orderReducer from './store/reducers/orders'
+import orderReducer from "./store/reducers/orders";
+import { NavigationContainer } from "@react-navigation/native";
 const fetchFonts = () => {
   return Font.loadAsync({
     "open-sans": require("./assets/fonts/OpenSans-Regular.ttf"),
@@ -17,7 +18,7 @@ const fetchFonts = () => {
 const rootReducer = combineReducers({
   products: productsReducer,
   cart: cartReducer,
-  orders: orderReducer
+  orders: orderReducer,
 });
 
 const store = createStore(rootReducer);
@@ -37,7 +38,9 @@ export default function App() {
 
   return (
     <Provider store={store}>
-      <MyDrawer />
+      <NavigationContainer>
+       <MyDrawer />
+      </NavigationContainer>
     </Provider>
   );
 }
