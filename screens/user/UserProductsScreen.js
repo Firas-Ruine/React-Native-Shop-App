@@ -47,7 +47,9 @@ const UserProductsScreen = (props) => {
           image={itemData.item.imageUrl}
           title={itemData.item.title}
           price={itemData.item.price}
-          onSelect={() => {}}
+          onSelect={() => {
+            editProductHandler(itemData.item.id)
+          }}
         >
           <Button
             color={Colors.orange}
