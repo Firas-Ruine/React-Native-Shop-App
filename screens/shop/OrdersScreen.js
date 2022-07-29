@@ -17,21 +17,20 @@ import * as ordersActions from "../../store/actions/orders";
 
 const OrdersScreen = props => {
   const [isLoading, setIsLoading] = useState(false);
-
   const orders = useSelector(state => state.orders.orders);
   const dispatch = useDispatch();
 
-  /*useEffect(() => {
+  useEffect(() => {
     setIsLoading(true);
     dispatch(ordersActions.fetchOrders()).then(() => {
       setIsLoading(false);
     });
-  }, [dispatch]);*/ 
+  }, [dispatch]);
 
   if (isLoading) {
     return (
       <View style={styles.centered}>
-        <ActivityIndicator size="large" color={Colors.primary} />
+        <ActivityIndicator size="large" color={Colors.orange} />
       </View>
     );
   }

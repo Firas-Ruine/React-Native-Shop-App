@@ -1,6 +1,7 @@
-import { combineReducers, createStore } from "redux";
+import { combineReducers, createStore , applyMiddleware} from "redux";
 import { Provider } from "react-redux";
 import { useState } from "react";
+import ReduxThunk from 'redux-thunk';
 import { StyleSheet, View } from "react-native";
 import productsReducer from "./store/reducers/products";
 import cartReducer from "./store/reducers/cart";
@@ -21,7 +22,7 @@ const rootReducer = combineReducers({
   orders: orderReducer,
 });
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer,applyMiddleware(ReduxThunk));
 
 export default function App() {
   const [dataLoaded, setDataLoaded] = useState(false);
