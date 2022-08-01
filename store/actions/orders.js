@@ -4,9 +4,10 @@ export const SET_ORDERS = "SET_ORDERS";
 
 
 export const fetchOrders = () => {
-  return async (dispatch) => {
+  return async (dispatch,getState) => {
+    const userId = getState().auth.userId
     try {
-      const response = await fetch("https://shop-app-2ca43-default-rtdb.firebaseio.com/orders/u1.json",
+      const response = await fetch(`https://shop-app-2ca43-default-rtdb.firebaseio.com/orders/${userId}.json`,
       ); // add your own API url
       if (!response.ok) {
         throw new Error("Something went wrong!");
@@ -32,10 +33,13 @@ export const fetchOrders = () => {
 };
 
 export const addOrder = (cartItems, totalAmount) => {
-  return async (dispatch) => {
+  return async (dispatch,getState) => {
+    console.log(getState())
+    const token = getState().auth.token;
+    const userId = getState().auth.userId
     const date = new Date();
     const response = await fetch(
-      "https://shop-app-2ca43-default-rtdb.firebaseio.com/orders/u1.json",
+      `https://shop-app-2ca43-default-rtdb.firebaseio.com/orders/${userId}.json?auth=${token}`,
       {
         method: "POST",
         headers: {

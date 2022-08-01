@@ -38,6 +38,14 @@ const UserProductsScreen = (props) => {
     props.navigation.navigate("EditProduct", { productId: id });
   };
 
+  if (userProducts.length === 0) {
+    return (
+      <View style={styles.text}>
+        <Text>No products found, maybe start creating some</Text>
+      </View>
+    );
+  }
+
   return (
     <FlatList
       data={userProducts}
@@ -48,7 +56,7 @@ const UserProductsScreen = (props) => {
           title={itemData.item.title}
           price={itemData.item.price}
           onSelect={() => {
-            editProductHandler(itemData.item.id)
+            editProductHandler(itemData.item.id);
           }}
         >
           <Button
@@ -98,5 +106,13 @@ export const screenOptions = (navData) => {
     ),
   };
 };
-
+const styles = StyleSheet.create({
+  text: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    fontFamily:'open-sans',
+    fontSize:16
+  },
+});
 export default UserProductsScreen;

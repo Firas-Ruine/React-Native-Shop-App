@@ -9,6 +9,7 @@ import { MyDrawer, MyStack, ProductsNavigators } from "./navigation/ShopNavigato
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
 import orderReducer from "./store/reducers/orders";
+import authReducer from './store/reducers/auth'
 import { NavigationContainer } from "@react-navigation/native";
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
   products: productsReducer,
   cart: cartReducer,
   orders: orderReducer,
+  auth:authReducer
 });
 
 const store = createStore(rootReducer,applyMiddleware(ReduxThunk));

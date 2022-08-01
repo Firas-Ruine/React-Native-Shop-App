@@ -93,8 +93,10 @@ const styles = StyleSheet.create({
   input: {
     paddingHorizontal: 2,
     paddingVertical: 5,
-    borderBottomColor: "#ccc",
-    borderBottomWidth: 1,
+    borderColor: "#ccc",
+    borderWidth: 1,
+    borderRadius:10,
+    height:50,
   },
   error: {
     fontFamily:'open-sans',
